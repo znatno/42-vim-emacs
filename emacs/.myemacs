@@ -1,0 +1,40 @@
+(global-font-lock-mode t)
+
+; A C code is automatically indented with tabs
+(setq-default c-basic-offset 4)
+
+; A pair (parenthesis or brace) is automatically closed when you know the opening element
+(defun ffr-insert-parentheses ()
+    "insert parentheses and go between them"
+    (interactive)
+    (insert "()")
+    (backward-char 1))
+
+(defun ffr-insert-braces ()
+   "insert curly braces and go between them"
+   (interactive)
+   (insert "{}")
+   (backward-char 2))
+
+(add-hook 'c-mode-common-hook (lambda () (local-set-key "("  'ffr-insert-parentheses)))
+(add-hook 'c-mode-common-hook (lambda () (local-set-key "{"  'ffr-insert-braces)))
+
+; The position column of the cursor is displayed
+(setq column-number-mode t)
+(setq line-number-mode t)
+
+; Two side-by-side spaces are highlighted
+(global-hi-lock-mode 1)
+(add-hook 'change-major-mode-hook '(lambda() (highlight-regexp "  " 'hi-green)))
+(add-hook 'change-major-mode-hook '(lambda() (highlight-regexp "   " 'hi-green)))
+
+; A whitespace before a line break is highlighted
+(setq-default show-trailing-whitespace t)
+
+; Backup files
+(setq backup-directory-alist `(("." . "~/.emacs.d")))
+
+; Header
+(load "~/header.el")
+(global-set-key (kbd "C-x s") 'update_header)
+(global-set-key (kbd "C-c h") 'header)

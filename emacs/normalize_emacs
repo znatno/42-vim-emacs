@@ -1,0 +1,18 @@
+C-c h
+C-o
+C-u 5 C-n
+C-u 3 C-k
+C-u 2 C-p
+C-y
+M-x whitespace-cleanup
+M-f <space>
+C-a <del>
+C-u 3 C-p
+<del>
+C-n <del>
+C-u 14 C-n
+<tab>
+C-p
+M-f <space>
+C-x s
+C-x c

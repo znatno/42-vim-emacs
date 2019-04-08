@@ -1,0 +1,17 @@
+List of Commands and Keys for VIM to normalize_me.c
+
+:%s/        /\t\t
+:%s/        /\t
+:%s/\v(\s+$)|( +\ze\t)
+:Stdheader
+:17,19m 14
+:%s/\tchar/char
+:%s/while(/while (
+:%s/break;/break ;
+:24
+:s/\t(/\t\t(
+:22
+:s/\t\t\t/\t\t{\r\t\t\t
+:26
+:s/tmp =/}\r\t\ttmp =
+:x
